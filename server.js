@@ -61,7 +61,7 @@ app.post("/userdata", function(req, res) {
     });
 
     //Json data send to client side
-    res.json("Description was Added");
+    // res.json("Description was Added");
   }
 });
 
