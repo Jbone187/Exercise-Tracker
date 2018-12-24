@@ -12,13 +12,12 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 //Connection String
-/*  const dbConnection = mysql.createConnection({
+const dbConnection = mysql.createConnection({
   host: process.env.host,
   user: process.env.user,
   password: process.env.password,
   database: process.env.db
 });
-*/
 
 //Post request to create short url and add to db
 app.post("/", function(req, res) {
@@ -31,13 +30,13 @@ app.post("/", function(req, res) {
       .substring(2, 7);
 
     //Sql query
-    let query1 = `insert into String(Link, Short) values('${userName}', '${userId}')`;
+    let query1 = `insert into Workout(username, userId) values('${userName}', '${userId}')`;
 
     dbConnection.query(query1, function(err, result, fields) {
       if (err) throw err;
     });
     //Json data send to client side
-    res.json("User Add to DB");
+    res.json("User was Add to DB");
   }
 });
 
