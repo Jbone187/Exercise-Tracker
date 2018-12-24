@@ -19,7 +19,7 @@ const dbConnection = mysql.createConnection({
 });
 
 //Post request to create short url and add to db
-app.post("/", function(req, res) {
+app.post("/createuser", function(req, res) {
   let userName = req.body.user;
 
   if (userName) {
@@ -39,6 +39,33 @@ app.post("/", function(req, res) {
   }
 });
 
+app.post("/userdata", function(req, res) {
+  let userName = req.body.user;
+  let description = req.body.des;
+
+  if (description) {
+    //Sql query
+    let query2 = `update Workout set description = '${description}' where username = '${userName}'`;
+    let query3 = "select* from Workout where username = ?";
+
+    dbConnection.query(query3, [userName], function(err, result, fields) {
+      if (err) throw err;
+
+      if (result.length > 0) {
+        if (userName) {
+          dbConnection.query(query2, function(err, result, fields) {
+            if (err) throw err;
+          });
+        }
+      }
+    });
+
+    //Json data send to client side
+    res.json("Description was Added");
+  }
+});
+
+/*
 // Get request that allow created url to do redirct to url stored on db
 app.get("/:id", function(req, res) {
   let query2 = "select* from string where Short = ?";
@@ -69,9 +96,9 @@ app.get("/:id", function(req, res) {
     });
   });
 });
-
+*/
 /*--------------------Routing Over----------------------------*/
 
 app.listen(3001, function() {
-  console.log("Node is Running on port 3000");
+  console.log("Node is Running on port 3001");
 });
