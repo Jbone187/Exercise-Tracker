@@ -2,10 +2,9 @@ const bodyParser = require("body-parser");
 
 const express = require("express");
 const mysql = require("mysql");
-//const url = process.env.url;
 const dotenv = require("dotenv");
 const app = express();
-// dotenv.config();
+dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
