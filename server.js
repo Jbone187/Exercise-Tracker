@@ -45,11 +45,11 @@ app.post("/userdata", function(req, res) {
   let minutes = req.body.min;
   let date = req.body.date;
 
-  if (description) {
-    //Sql query
-    let query2 = `update Workout set description = '${description}', minutes = '${minutes}', date = '${date}' where username = '${userName}'`;
-    let query3 = "select* from Workout where username = ?";
+  //Sql query
+  let query2 = `update Workout set description = '${description}', minutes = '${minutes}', date = '${date}' where username = '${userName}'`;
+  let query3 = "select* from Workout where username = ?";
 
+  if (description) {
     dbConnection.query(query3, [userName], function(err, result, fields) {
       if (err) throw err;
 
