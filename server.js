@@ -40,7 +40,7 @@ app.post("/createuser", function(req, res) {
 
 app.post("/userdata", function(req, res) {
   let userName = req.body.user;
-  let description = req.body.des;
+  let description = req.body.descript;
   let minutes = req.body.min;
   let date = req.body.date;
 
