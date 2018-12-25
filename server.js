@@ -67,38 +67,6 @@ app.post("/userdata", function(req, res) {
   }
 });
 
-/*
-// Get request that allow created url to do redirct to url stored on db
-app.get("/:id", function(req, res) {
-  let query2 = "select* from string where Short = ?";
-
-  dbConnection.connect(function(error) {
-    dbConnection.query(query2, [req.params.id], function(
-      error,
-      result,
-      fields
-    ) {
-      if (error) {
-        res.send({
-          code: 400,
-          failed: "DB Error Ocurred"
-        });
-      }
-      // Searches DB for results associated with query
-      if (result.length > 0) {
-        if (req.params.id) {
-          res.redirect(result[0].Link);
-        }
-      } else {
-        res.send({
-          code: 500,
-          failed: "DB Error Ocurred"
-        });
-      }
-    });
-  });
-});
-*/
 /*--------------------Routing Over----------------------------*/
 
 app.listen(3001, function() {
