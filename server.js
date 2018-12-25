@@ -1,5 +1,4 @@
 const bodyParser = require("body-parser");
-
 const express = require("express");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
