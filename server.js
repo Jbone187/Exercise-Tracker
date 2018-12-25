@@ -34,21 +34,21 @@ app.post("/createuser", function(req, res) {
       if (err) throw err;
     });
     //Json data send to client side
-    res.json("User was Add to DB");
+    res.json("User was Added");
   }
 });
 
 app.post("/userdata", function(req, res) {
   let userName = req.body.user;
-  let description = req.body.descript;
+  let descript = req.body.descript;
   let minutes = req.body.min;
   let date = req.body.date;
 
   //Sql query
-  let query2 = `update Workout set description = '${description}', minutes = '${minutes}', date = '${date}' where username = '${userName}'`;
+  let query2 = `update Workout set description = '${descript}', minutes = '${minutes}', date = '${date}' where username = '${userName}'`;
   let query3 = "select* from Workout where username = ?";
 
-  if (description) {
+  if (descript) {
     dbConnection.query(query3, [userName], function(err, result, fields) {
       if (err) throw err;
 
