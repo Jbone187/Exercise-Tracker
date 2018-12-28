@@ -34,7 +34,7 @@ app.post("/createuser", function(req, res) {
       if (err) throw err;
     });
     //Json data send to client side
-    res.json("User was Added");
+    res.json(`User was Created with UserID ${userId}`);
   }
 });
 
@@ -56,14 +56,30 @@ app.post("/userdata", function(req, res) {
         if (userName) {
           dbConnection.query(query2, function(err, result, fields) {
             if (err) throw err;
+            res.json("Data was Entered");
           });
         }
       }
     });
-
-    //Json data send to client side
-    res.json("Description was Added");
   }
+});
+
+app.post("/userInfo", function(req, res) {
+  let userId = req.body.userId;
+
+  //Sql query
+
+  let query4 = "select* from Workout where userId = ?";
+
+  dbConnection.query(query4, [userId], function(err, result, fields) {
+    if (err) throw err;
+
+    if (result.length > 0) {
+      if (userId) {
+        res.json(result);
+      }
+    }
+  });
 });
 
 /*--------------------Routing Over----------------------------*/
