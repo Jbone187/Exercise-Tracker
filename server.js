@@ -51,7 +51,6 @@ app.post("/userdata", function(req, res) {
   if (descript) {
     dbConnection.query(query2, [userName], function(err, result, fields) {
       if (err) throw err;
-
       if (result.length > 0) {
         if (userName) {
           dbConnection.query(query3, function(err, result, fields) {
@@ -71,7 +70,6 @@ app.post("/userInfo", function(req, res) {
 
   dbConnection.query(query4, [userId], function(err, result, fields) {
     if (err) throw err;
-
     if (result.length > 0) {
       if (userId) {
         res.json(result);
