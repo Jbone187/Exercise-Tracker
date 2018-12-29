@@ -17,7 +17,7 @@ const dbConnection = mysql.createConnection({
   database: process.env.db
 });
 
-//Post request to create short url and add to db
+//Post request to db
 app.post("/createuser", function(req, res) {
   let userName = req.body.user;
 
@@ -45,16 +45,16 @@ app.post("/userdata", function(req, res) {
   let date = req.body.date;
 
   //Sql query
-  let query2 = `update Workout set description = '${descript}', minutes = '${minutes}', date = '${date}' where username = '${userName}'`;
-  let query3 = "select* from Workout where username = ?";
+  let query2 = "select* from Workout where username = ?";
+  let query3 = `update Workout set description = '${descript}', minutes = '${minutes}', date = '${date}' where username = '${userName}'`;
 
   if (descript) {
-    dbConnection.query(query3, [userName], function(err, result, fields) {
+    dbConnection.query(query2, [userName], function(err, result, fields) {
       if (err) throw err;
 
       if (result.length > 0) {
         if (userName) {
-          dbConnection.query(query2, function(err, result, fields) {
+          dbConnection.query(query3, function(err, result, fields) {
             if (err) throw err;
             res.json("Data was Entered");
           });
@@ -66,9 +66,7 @@ app.post("/userdata", function(req, res) {
 
 app.post("/userInfo", function(req, res) {
   let userId = req.body.userId;
-
   //Sql query
-
   let query4 = "select* from Workout where userId = ?";
 
   dbConnection.query(query4, [userId], function(err, result, fields) {
