@@ -80,8 +80,6 @@ app.post("/userInfo", function(req, res) {
   });
 });
 
-/*--------------------Routing Over----------------------------*/
-
 app.listen(3001, function() {
   console.log("Node is Running on port 3001");
 });
