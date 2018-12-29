@@ -17,7 +17,7 @@ const dbConnection = mysql.createConnection({
   database: process.env.db
 });
 
-//Post request to db
+//Post request to db Create User
 app.post("/createuser", function(req, res) {
   let userName = req.body.user;
 
@@ -37,7 +37,7 @@ app.post("/createuser", function(req, res) {
     res.json(`User was Created with UserID ${userId}`);
   }
 });
-
+//Post request to db Update User Info
 app.post("/userdata", function(req, res) {
   let userName = req.body.user;
   let descript = req.body.descript;
@@ -63,7 +63,7 @@ app.post("/userdata", function(req, res) {
     });
   }
 });
-
+//Post request to db retrive User Exercise data
 app.post("/userInfo", function(req, res) {
   let userId = req.body.userId;
   //Sql query
@@ -79,7 +79,7 @@ app.post("/userInfo", function(req, res) {
     }
   });
 });
-
+//End of Routing
 app.listen(3001, function() {
   console.log("Node is Running on port 3001");
 });
