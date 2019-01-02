@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <h1>Exercise Tracker</h1>
+
+    <h2>Create a User</h2>
+    <form action="/createuser" method="POST">
+      Username: <input type="text" name="user" /> <br />
+      <input type="submit" value="Create Account" />
+    </form>
+
+    <br />
+    <br />
+    <br />
+
+    <h2>Input Exercise Data</h2>
+    <form action="/userdata" method="POST">
+      User: <input type="text" name="user" /> Description:
+      <input type="text" name="descript" /> minutes:
+      <input type="text" name="min" /> date: <input type="text" name="date" />
+      <br />
+      <input type="submit" value="Enter Data" />
+    </form>
+
+    <br />
+    <br />
+    <br />
+
+    <h2>Retrive Exercise Data</h2>
+    <form action="/userInfo" method="POST">
+      UserID: <input type="text" name="userId" />
+      <input type="submit" value="Exercise Data" />
+    </form>
+
+    <br />
+    <br />
+    <br />
+  </body>
+  <script></script>
+</html>
